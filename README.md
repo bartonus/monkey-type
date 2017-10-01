@@ -2,12 +2,14 @@
 Script imitating typing.
 
 # simply usage
+```html
+
+<h1>Write this text<h1>
+
+```
+
 ```javascript
-$('.title').monkeyType('Hello World! Typing slowly...', {
 
-	speed: 'slow',
-	cursorType: 'replace',
+$('h1').monkeyType();
 
-
-});
 ```
