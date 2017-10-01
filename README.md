@@ -4,12 +4,10 @@ Script imitating typing.
 # simply usage
 ```html
 
-<h1>Write this text<h1>
+<h1 id="mytitle">Write this text<h1>
 
-```
-
-```javascript
-
-$('h1').monkeyType();
+<script>
+  $('#mytitle').monkeyType();
+</script>
 
 ```
