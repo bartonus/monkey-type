@@ -64,6 +64,7 @@
 		
 		this.setOption = function(option) {
 
+			// set speed
 			if (option instanceof Object) {
 				if (option.speed == 'fast') this.speed = 0.3;
 				else if (option.speed == 'medium') this.speed = 0.6;
@@ -75,6 +76,10 @@
 				this.speed = 1;	
 			}
 			
+			// set cursor
+			if (option.cursorType == 'replace') this.cursorType = 'replace';
+			else this.cursorType = 'insert';
+			$(this).addClass('monkey-type-' + this.cursorType);
 		}
 		
 		this.setTypeText(text);

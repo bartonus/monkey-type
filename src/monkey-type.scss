@@ -5,10 +5,20 @@
  * Project: https://github.com/bartonus/monkey-type
  */
  
-.monkey-type:after {
-	content: "_";
-	animation: blink 1s .7s infinite;
-	-webkit-animation: blink .7s infinite;
+.monkey-type {
+
+	&:after {
+		animation: blink 1s .7s infinite;
+		-webkit-animation: blink .7s infinite;
+	}
+	
+	&.monkey-type-insert:after  {
+		content: "_";
+	}
+	
+	&.monkey-type-replace:after  {
+		content: "|";
+	}
 }
 
 @-webkit-keyframes blink {
