@@ -6,10 +6,8 @@ Script imitating typing.
 
 <h1>Write this text<h1>
 
-```
-
-```javascript
-
-$('h1').monkeyType();
+<script>
+  $('h1').monkeyType();
+</script>
 
 ```
