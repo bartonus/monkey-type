@@ -1,0 +1,28 @@
+/* 
+ * MonkeyType 1.0.0
+ * Copyright 2017 Michal Barcikowski
+ * Available via the MIT or new BSD @license. 
+ * Project: https://github.com/bartonus/monkey-type
+ */
+ 
+.monkey-type:after {
+	content: "_";
+	animation: blink 1s .7s infinite;
+	-webkit-animation: blink .7s infinite;
+}
+
+@-webkit-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 0; }
+	100% { opacity: 1; }
+}
+@-moz-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 0; }
+	100% { opacity: 1; }
+}
+@keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 0; }
+	100% { opacity: 1; }
+}

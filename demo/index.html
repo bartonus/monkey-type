@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang=en>
+	<head>
+		<meta charset=utf-8>
+		<title>monkey-type::demo</title>
+		<link rel="stylesheet" type="text/css" href="../src/monkey-type.min.css"/>
+		<script type="text/javascript" src="lib/jquery-3.2.1.min.js"></script>				
+		<script type="text/javascript" src="../src/monkey-type.min.js"></script>
+		<style>
+			
+			body {
+			
+				paddingL 0;
+				margin: 0;
+			
+			}
+			
+			header {
+			
+				text-align: center;
+				padding: 0 20px;
+				height: 150px;				
+				font-family: Arial;
+				background: #EEE;
+				display: flex;
+				align-items: center;
+			
+			}
+			
+			header h1 {
+			
+				width: 40%;
+				margin: 0 auto;
+			
+			}
+			
+			section {
+			
+				padding: 20px 20px;
+				width: 50%;
+				margin: 0 auto;
+				font-family: Arial;
+				text-align: justify;
+			
+			}
+			
+		</style>				
+	</head>
+	<body>
+		
+		<header>
+			<h1 id="myTitle"></h1>
+		</header>
+		
+		<section>
+			<p id="paragraph"></p>
+		</section>
+	
+		<script type="text/javascript">
+
+			$(document).ready(function(){
+				
+				$('h1').monkeyType('Hello! This text is written by a monkey ;-)', 'slow');	
+
+				$('p').monkeyType('Very Fast Monkey Type. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam viverra nisi, in interdum massa nibh nec erat.', 'vfast');	
+			
+			
+			});
+
+		</script>
+				
+	</body>
+</html>
