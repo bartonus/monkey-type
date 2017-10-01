@@ -7,7 +7,7 @@
 
 (function(jq){
 
-	var monkeyType = function(text, speed){
+	var monkeyType = function(text, option){
 
 		// monkey element verification
 		this.elementId = $(this).attr('id');
@@ -15,15 +15,6 @@
 			alert("No 'ID' attribute for monkeyType element. Define it, and try again.");
 			return false;
 		}
-
-		// set text
-		this.typeThis = text;
-
-		// set speed
-		if (speed == 'fast') this.speed = 0.3;
-		else if (speed == 'medium') this.speed = 0.6;
-		else if (speed == 'vfast') this.speed = 0.1;
-		else this.speed = 1;
 
 		// monkey definition
 		this.monkeyTypeDefinition = [100,200,200,400,50,100,20,20,100,50,50,400];
@@ -67,6 +58,27 @@
 			setTimeout("$('#"+this.elementId+"').append('"+char+"');", delay);
 		}
 
+		this.setTypeText = function(text) {			
+			this.typeThis = text;
+		}
+		
+		this.setOption = function(option) {
+
+			if (option instanceof Object) {
+				if (option.speed == 'fast') this.speed = 0.3;
+				else if (option.speed == 'medium') this.speed = 0.6;
+				else if (option.speed == 'vfast') this.speed = 0.1;
+				else if (option.speed == 'slow') this.speed = 1.5;
+				else this.speed = 1;
+			}
+			else {
+				this.speed = 1;	
+			}
+			
+		}
+		
+		this.setTypeText(text);
+		this.setOption(option);
 		this.typeItNow();
 
 	}
