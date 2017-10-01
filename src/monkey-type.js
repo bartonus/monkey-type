@@ -1,5 +1,5 @@
 /* 
- * MonkeyType 1.5.0
+ * MonkeyType 1.6.0
  * Copyright 2017 Michal Barcikowski
  * Available via the MIT or new BSD @license. 
  * Project: https://github.com/bartonus/monkey-type
@@ -56,21 +56,30 @@
 
 		this.writeChar = function(char, delay, lastChar) {
 			
+			// variables
+			var putChar = char;
+			var element = $('#' + this.elementId);
+			var doItAfterFinish = this.doItAfterFinish;
+		
 			// add char to string
-			setTimeout("$('#"+this.elementId+"').append('"+char+"');", delay);
-			
-			// stop blinking
-			if (this.cursorStopAfter == true)
-			{
-				if(lastChar == true)
+			setTimeout(function(){ element.append(putChar); }, delay);
+						
+			// do it on last char
+			if (lastChar == true) {
+
+				// do it after finish
+				setTimeout(function(){doItAfterFinish();}, delay);
+
+				// stop blinking
+				if (this.cursorStopAfter == true)
 				{
-					setTimeout("$('#"+this.elementId+"').removeClass('monkey-type-replace');", delay);
-					setTimeout("$('#"+this.elementId+"').removeClass('monkey-type-insert');", delay);
+					setTimeout(function(){ element.removeClass('monkey-type-replace'); }, delay);
+					setTimeout(function(){ element.removeClass('monkey-type-insert'); }, delay);
 				}
 			}
 		}
 
-		this.setTypeText = function(text) {			
+		this.setTypeText = function(text) {
 			this.typeThis = text.replace(/[^a-zA-Z0-9ęóąśłżźćń,.\(\)\[\]!@#;:'"\? -]/gi, ' ');
 			$(this).html('');
 		}
@@ -99,6 +108,12 @@
 				if (option.cursorStopAfter == false) this.cursorStopAfter = false;
 				else this.cursorStopAfter = true;
 
+				// set action after finish
+				if (option.doItAfterFinish instanceof Function) {
+					this.doItAfterFinish = option.doItAfterFinish;
+				} else {
+					this.doItAfterFinish = function(){};
+				}
 			}
 
 			// set defaults

@@ -10,7 +10,7 @@
 			
 			body {
 			
-				paddingL 0;
+				padding: 0;
 				margin: 0;
 			
 			}
@@ -26,11 +26,18 @@
 				align-items: center;
 			
 			}
-			
-			header h1 {
-			
+
+			header div {
+
 				width: 40%;
 				margin: 0 auto;
+			}
+			
+			header h1, header h2  {
+			
+				text-align: center;
+				padding: 0;
+				margin: 0;
 			
 			}
 			
@@ -49,7 +56,10 @@
 	<body>
 		
 		<header>
-			<h1 id="myTitle"></h1>
+			<div>
+				<h1 id="myTitle"></h1>
+				<h2 id="subTitle"></h2>
+			</div>
 		</header>
 		
 		<section>
@@ -66,16 +76,26 @@
 
 			$(document).ready(function(){
 
-				var option = {
+				$('h1').monkeyType({
 
-					monkeyText: 'Hello! This text is written by a monkey ;-)',
+					monkeyText: 'Hello World!',
 					speed: 'medium',
-					cursorType: 'replace',
-					cursorStopAfter: false,
+					cursorType: 'replace',					
+					doItAfterFinish: function(){ 
+						
+						$('h2').monkeyType({
 
-				};
+							monkeyText: 'This text is written by a monkey ;-)',
+							speed: 'fast',
+							cursorType: 'replace',
+							cursorStopAfter: false					
 
-				$('h1').monkeyType(option);
+						});						
+						
+					}
+
+				});		
+				
 				$('p').monkeyType({speed: 'vfast'});	
 			
 			});
