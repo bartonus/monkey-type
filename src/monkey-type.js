@@ -1,5 +1,5 @@
 /* 
- * MonkeyType 1.6.0
+ * MonkeyType 1.7.0
  * Copyright 2017 Michal Barcikowski
  * Available via the MIT or new BSD @license. 
  * Project: https://github.com/bartonus/monkey-type
@@ -84,6 +84,17 @@
 			$(this).html('');
 		}
 		
+		this.isScrollEnaught = function() {
+
+			var windowHeight = $(window).height();
+			var fromTop = $(window).scrollTop();
+			var elementPosition = $('#' + this.elementId).offset().top;
+			
+			if ((windowHeight + fromTop) >= elementPosition) return true;
+			else return false;
+
+		}
+		
 		this.setOption = function(option) {
 
 			// check option object
@@ -108,6 +119,10 @@
 				if (option.cursorStopAfter == false) this.cursorStopAfter = false;
 				else this.cursorStopAfter = true;
 
+				// start type after scroll to it
+				if (option.startAfterScroll == true) this.startAfterScroll = true;
+				else this.startAfterScroll = false;
+
 				// set action after finish
 				if (option.doItAfterFinish instanceof Function) {
 					this.doItAfterFinish = option.doItAfterFinish;
@@ -130,7 +145,35 @@
 		}
 		
 		this.setOption(option);
-		this.typeItNow();
+		
+		// check doItAfterFinish
+		if (this.startAfterScroll == true && this.isScrollEnaught() == false) {
+
+			var that = this;
+			var started = false;
+			$(window).scroll(function(){
+				
+				
+				if (started == false) {
+
+					var windowHeight = $(window).height();
+					var fromTop = $(window).scrollTop();
+					var elementPosition = $('#'+that.elementId).offset().top;
+
+					if (that.isScrollEnaught())
+					{
+						started = true;
+						that.typeItNow();
+					}
+
+				}
+				
+			});
+
+		}
+		else {
+			this.typeItNow();
+		}
 
 	}
 

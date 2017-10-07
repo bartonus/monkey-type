@@ -62,7 +62,25 @@
 			</div>
 		</header>
 		
-		<section>
+		<section>			
+			<p>Static text. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+			Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem.
+			Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis,
+			turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet,
+			elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque.
+			Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales
+			velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam viverra nisi, in interdum massa nibh nec erat.</p>
+			
+			<p>Static text. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+			Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem.
+			Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis,
+			turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet,
+			elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque.
+			Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales
+			velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam viverra nisi, in interdum massa nibh nec erat.</p>
+			
+			<h1 id="myHeader">This is new header!</h1>
+			
 			<p id="paragraph">Very Fast Monkey Type. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 			Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem.
 			Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis,
@@ -70,25 +88,26 @@
 			elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque.
 			Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales
 			velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam viverra nisi, in interdum massa nibh nec erat.</p>
+			
 		</section>
 	
 		<script type="text/javascript">
 
 			$(document).ready(function(){
 
-				$('h1').monkeyType({
+				$('#myTitle').monkeyType({
 
 					monkeyText: 'Hello World!',
 					speed: 'medium',
 					cursorType: 'replace',					
 					doItAfterFinish: function(){ 
 						
-						$('h2').monkeyType({
+						$('#subTitle').monkeyType({
 
 							monkeyText: 'This text is written by a monkey ;-)',
 							speed: 'fast',
 							cursorType: 'replace',
-							cursorStopAfter: false					
+							cursorStopAfter: false,
 
 						});						
 						
@@ -96,10 +115,16 @@
 
 				});		
 				
-				$('p').monkeyType({speed: 'vfast'});	
+				$('#myHeader').monkeyType({
+					
+					startAfterScroll: true,
+					
+				});
 			
-			});
+			
 
+			});			
+			
 		</script>
 				
 	</body>
