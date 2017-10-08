@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="../src/monkey-type.min.css"/>
 		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 		<script type="text/javascript" src="lib/jquery-3.2.1.min.js"></script>				
 		<script type="text/javascript" src="../src/monkey-type.min.js"></script>
 		<style>
@@ -103,7 +104,7 @@
 			Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales
 			velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam viverra nisi, in interdum massa nibh nec erat.</p>
 			
-			<h1 id="myHeader">Monkey start type this element, after you <b>scroll</b> to it.</h1>
+			<h1 id="myHeader">Monkey start type this element, after you scroll to it.</h1>
 			
 			<p id="paragraph">This text will be type, after header above will finished. Very Fast Monkey Type is here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 			Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem.
@@ -143,7 +144,9 @@
 			});				
 
 			$('#myParagraphTitle').monkeyType({speed: 'fast', startAfter: '#subTitle'});
+			
 			$('#myHeader').monkeyType({speed: 'fast'});
+			
 			$('#paragraph').monkeyType({speed: 'vfast', 'startAfter': '#myHeader'});
 			
 		</script>

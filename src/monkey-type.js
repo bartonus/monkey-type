@@ -48,7 +48,7 @@
 			return Math.floor((Math.random() * to) + from);
 		}
 
-		this.rollMonkey = function() 
+		this.monkeyTypeCheckStartAfter = function() 
 		{
 			var that = this;
 			
@@ -60,7 +60,7 @@
 
 					if ($(this).hasClass('monkey-type-finish'))
 					{
-						that.rollMonkeyRoll();
+						that.monkeyTypeCheckAfterScroll();
 					}
 					
 
@@ -70,11 +70,11 @@
 			// just roll
 			else
 			{
-				this.rollMonkeyRoll();
+				this.monkeyTypeCheckAfterScroll();
 			}
 		}
 		
-		this.rollMonkeyRoll = function()
+		this.monkeyTypeCheckAfterScroll = function()
 		{
 			// start when element view
 			if (this.option.startAfterScroll == true && this.elementInView() == false) {
@@ -227,7 +227,7 @@
 		}
 
 		this.setOption(option);
-		this.rollMonkey();
+		this.monkeyTypeCheckStartAfter();
 
 	}
 
