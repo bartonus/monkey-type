@@ -1,5 +1,5 @@
 /*
- * MonkeyType 1.7.0
+ * MonkeyType 2.0.1
  * Copyright 2017 Michal Barcikowski
  * Available via the MIT or new BSD @license.
  * Project: https://github.com/bartonus/monkey-type
@@ -15,6 +15,7 @@
 		cursorStopAfter: true,				// turn cursor blinking off when monkey stop type
 		startAfterScroll: true,				// start type when element visible on screen
 		doItAfterFinish: function(){},		// do it after type finish
+		startAfter: null,					// start type, after this element finish
 
 	};
 
@@ -47,6 +48,65 @@
 			return Math.floor((Math.random() * to) + from);
 		}
 
+		this.rollMonkey = function() 
+		{
+			var that = this;
+			
+			// if startAfter defined
+			if (this.option.startAfter != null) {
+				var elementAfter = $(this.option.startAfter);
+
+				elementAfter.bind('cssClassChanged', function(){
+
+					if ($(this).hasClass('monkey-type-finish'))
+					{
+						that.rollMonkeyRoll();
+					}
+					
+
+				});
+			}
+			
+			// just roll
+			else
+			{
+				this.rollMonkeyRoll();
+			}
+		}
+		
+		this.rollMonkeyRoll = function()
+		{
+			// start when element view
+			if (this.option.startAfterScroll == true && this.elementInView() == false) {
+
+				var that = this;
+				var started = false;
+				$(window).scroll(function(){
+
+					if (started == false) {
+
+						var windowHeight = $(window).height();
+						var fromTop = $(window).scrollTop();
+						var elementPosition = $('#'+that.elementId).offset().top;
+
+						if (that.elementInView())
+						{
+							started = true;
+							that.typeItNow();
+						}
+
+					}
+
+				});
+
+			}
+
+			// start immediately
+			else {
+				this.typeItNow();
+			}
+		}
+		
 		this.typeItNow = function ()
 		{
 
@@ -87,8 +147,16 @@
 			if (lastChar == true) {
 
 				// do it after finish
-				setTimeout(function(){doItAfterFinish(element);}, delay);
-
+				setTimeout(function(){
+					
+					// set class
+					element.addClass('monkey-type-finish');
+					
+					// do it after finish
+					doItAfterFinish(element);
+					
+				}, delay);
+				
 				// stop blinking
 				if (this.option.cursorStopAfter == true)
 				{
@@ -139,6 +207,10 @@
 				// set action after finish
 				if (option.doItAfterFinish instanceof Function) this.option.doItAfterFinish = option.doItAfterFinish;
 				else this.option.doItAfterFinish = monkeyDefaultOption.doItAfterFinish;
+				
+				// set startAfter
+				if (option.startAfter == '' || option.startAfter == undefined || option.startAfter == null) this.option.startAfter = monkeyDefaultOption.startAfter;
+				else this.option.startAfter = option.startAfter;
 			}
 
 			// set defaults
@@ -149,42 +221,29 @@
 				this.option.cursorStopAfter = monkeyDefaultOption.cursorStopAfter;
 				this.option.startAfterScroll = monkeyDefaultOption.startAfterScroll;
 				this.option.doItAfterFinish = monkeyDefaultOption.doItAfterFinish;
+				this.option.startAfter = monkeyDefaultOption.startAfter;
 			}
 
 		}
 
 		this.setOption(option);
-
-		// check doItAfterFinish
-		if (this.option.startAfterScroll == true && this.elementInView() == false) {
-
-			var that = this;
-			var started = false;
-			$(window).scroll(function(){
-
-				if (started == false) {
-
-					var windowHeight = $(window).height();
-					var fromTop = $(window).scrollTop();
-					var elementPosition = $('#'+that.elementId).offset().top;
-
-					if (that.elementInView())
-					{
-						started = true;
-						that.typeItNow();
-					}
-
-				}
-
-			});
-
-		}
-		else {
-			this.typeItNow();
-		}
+		this.rollMonkey();
 
 	}
 
 	$.fn.monkeyType = monkeyType;
 
+    // Your base, I'm in it!
+    var originalAddClassMethod = $.fn.addClass;
+    $.fn.addClass = function(){
+        // Execute the original method.
+        var result = originalAddClassMethod.apply(this, arguments);
+
+        // trigger a custom event
+        jQuery(this).trigger('cssClassChanged');
+
+        // return the original result
+        return result;
+    }	
+	
 })(jQuery);

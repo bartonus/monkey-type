@@ -3,15 +3,18 @@
 	<head>
 		<meta charset=utf-8>
 		<title>monkey-type::demo</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="../src/monkey-type.min.css"/>
+		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 		<script type="text/javascript" src="lib/jquery-3.2.1.min.js"></script>				
-		<script type="text/javascript" src="../src/monkey-type.js"></script>
+		<script type="text/javascript" src="../src/monkey-type.min.js"></script>
 		<style>
 			
 			body {
 			
 				padding: 0;
 				margin: 0;
+				font-family: 'Lato', sans-serif, arial;
 			
 			}
 			
@@ -20,7 +23,7 @@
 				text-align: center;
 				padding: 0 20px;
 				height: 150px;				
-				font-family: Arial;
+				font-family: 'Lato', sans-serif, arial;
 				background: #EEE;
 				display: flex;
 				align-items: center;
@@ -29,8 +32,10 @@
 
 			header div {
 
-				width: 40%;
+				width: 100%;
+				max-width: 400px;
 				margin: 0 auto;
+				box-sizing: border-box;
 			}
 			
 			header h1, header h2  {
@@ -44,12 +49,26 @@
 			section {
 			
 				padding: 20px 20px;
-				width: 50%;
+				width: 100%;
+				max-width: 400px;
+				box-sizing: border-box;
 				margin: 0 auto;
-				font-family: Arial;
+				font-family: 'Lato', sans-serif, arial;
 				text-align: justify;
 			
 			}
+
+			footer {
+			
+				text-align: center;
+				padding: 10px 20px;				
+				font-family: 'Lato', sans-serif, arial;
+				background: #EEE;
+				align-items: center;			
+			
+			}
+			
+			footer p { padding: 0; margin: 0; }
 			
 		</style>				
 	</head>
@@ -57,13 +76,26 @@
 		
 		<header>
 			<div>
-				<h1 id="myTitle"></h1>
-				<h2 id="subTitle"></h2>
+				<h1 id="myTitle">Hello World!</h1>
+				<h2 id="subTitle">This text is written by a monkey ;-)</h2>
 			</div>
 		</header>
 		
-		<section>			
-			<p>Static text. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+		<section>
+		
+			download:<br><b><a href="https://github.com/bartonus/monkey-type">https://github.com/bartonus/monkey-type</a></b>
+					
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+			Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem.
+			Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis,
+			turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet,
+			elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque.
+			Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales
+			velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam viverra nisi, in interdum massa nibh nec erat.</p>
+
+			<h2 id="myParagraphTitle">Scroll down, monkey will start type, after you scroll to this element.</h2>
+			
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 			Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem.
 			Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis,
 			turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet,
@@ -71,17 +103,9 @@
 			Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales
 			velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam viverra nisi, in interdum massa nibh nec erat.</p>
 			
-			<p>Static text. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-			Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem.
-			Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis,
-			turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet,
-			elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque.
-			Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales
-			velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam viverra nisi, in interdum massa nibh nec erat.</p>
+			<h1 id="myHeader">Monkey start type this element, after you <b>scroll</b> to it.</h1>
 			
-			<h1 id="myHeader">This is new header!</h1>
-			
-			<p id="paragraph">Very Fast Monkey Type. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+			<p id="paragraph">This text will be type, after header above will finished. Very Fast Monkey Type is here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 			Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem.
 			Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis,
 			turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet,
@@ -91,37 +115,36 @@
 			
 		</section>
 	
+		<footer>
+			<p>2017@MBARCIKOWSKI</p>
+			<a href="https://github.com/bartonus/monkey-type">https://github.com/bartonus/monkey-type</a>
+		</footer>
+	
 		<script type="text/javascript">
 
-			$(document).ready(function(){
+			$('#myTitle').monkeyType({
 
-				$('#myTitle').monkeyType({
+				speed: 'slow',
+				cursorType: 'replace',					
+				doItAfterFinish: function(element){ 
+					
+					element.css('color', '#AC0000');
+					
+				}
 
-					monkeyText: 'Hello World!',
-					speed: 'medium',
-					cursorType: 'replace',					
-					doItAfterFinish: function(element){ 
-						
-						element.css('color', '#AC0000');
-						
-						$('#subTitle').monkeyType({
+			});		
 
-							monkeyText: 'This text is written by a monkey ;-)',
-							speed: 'fast',
-							cursorType: 'replace',
-							cursorStopAfter: false,
-
-						});						
-						
-					}
-
-				});		
+			$('#subTitle').monkeyType({
 				
-				$('#myHeader').monkeyType();
-			
-			
+				speed: 'fast',
+				cursorType: 'insert',
+				startAfter: '#myTitle',
 
-			});			
+			});				
+
+			$('#myParagraphTitle').monkeyType({speed: 'fast', startAfter: '#subTitle'});
+			$('#myHeader').monkeyType({speed: 'fast'});
+			$('#paragraph').monkeyType({speed: 'vfast', 'startAfter': '#myHeader'});
 			
 		</script>
 				
