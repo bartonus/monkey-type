@@ -33,9 +33,10 @@
 		this.definitionSpeed = {'vslow': 1.5, 'slow': 1, 'medium': 0.6, 'fast': 0.3, 'vfast': 0.1};
 		this.definitionCursorType = ['insert', 'replace'];
 
-		// others
+		// basic vars
 		this.delay = 0;
 		this.charIndex = 0;
+		this.option = {};
 
 		// add class to object
 		$(this).addClass('monkey-type');
@@ -50,13 +51,13 @@
 		{
 
 			// set cursor
-			$(this).addClass('monkey-type-' + this.cursorType);
+			$(this).addClass('monkey-type-' + this.option.cursorType);
 
 			// roll
-			for(var i = 0; i < this.typeThis.length; i++)
+			for(var i = 0; i < this.typeText.length; i++)
 			{
 				// monkey definition
-				if (this.typeThis[i] != ' ')
+				if (this.typeText[i] != ' ')
 				{
 					var delayIt = this.definitionMonkeyType[this.beMoreMonkey(0, this.definitionMonkeyType.length)];
 				}
@@ -66,9 +67,9 @@
 				}
 
 				// write character
-				delayIt = delayIt * this.speed;
+				delayIt = delayIt * this.option.speed;
 				this.delay += delayIt;
-				this.writeChar(this.typeThis[i], this.delay, ((i == (this.typeThis.length - 1)) ? true : false));
+				this.writeChar(this.typeText[i], this.delay, ((i == (this.typeText.length - 1)) ? true : false));
 			}
 		}
 
@@ -77,7 +78,7 @@
 			// variables
 			var putChar = char;
 			var element = $('#' + this.elementId);
-			var doItAfterFinish = this.doItAfterFinish;
+			var doItAfterFinish = this.option.doItAfterFinish;
 
 			// add char to string
 			setTimeout(function(){ element.append(putChar); }, delay);
@@ -89,7 +90,7 @@
 				setTimeout(function(){doItAfterFinish(element);}, delay);
 
 				// stop blinking
-				if (this.cursorStopAfter == true)
+				if (this.option.cursorStopAfter == true)
 				{
 					setTimeout(function(){ element.removeClass('monkey-type-replace'); }, delay);
 					setTimeout(function(){ element.removeClass('monkey-type-insert'); }, delay);
@@ -98,7 +99,7 @@
 		}
 
 		this.setTypeText = function(text) {
-			this.typeThis = text.replace(/[^a-zA-Z0-9ęóąśłżźćń,.\(\)\[\]!@#;:'"\? -]/gi, ' ');
+			this.typeText = text.replace(/[^a-zA-Z0-9ęóąśłżźćń,.\(\)\[\]!@#;:'"\? -]/gi, ' ');
 			$(this).html('');
 		}
 
@@ -120,34 +121,34 @@
 				else this.setTypeText(option.monkeyText);
 
 				// set speed
-				if (this.definitionSpeed[option.speed] > 0) {this.speed = this.definitionSpeed[option.speed]; }
-				else this.speed = this.definitionSpeed[monkeyDefaultOption.speed];
+				if (this.definitionSpeed[option.speed] > 0) {this.option.speed = this.definitionSpeed[option.speed]; }
+				else this.option.speed = this.definitionSpeed[monkeyDefaultOption.speed];
 
 				// set cursor
-				if (this.definitionCursorType.indexOf(String(option.cursorType)) >= 0) this.cursorType = option.cursorType;
-				else this.cursorType = monkeyDefaultOption.cursorType;
+				if (this.definitionCursorType.indexOf(String(option.cursorType)) >= 0) this.option.cursorType = option.cursorType;
+				else this.option.cursorType = monkeyDefaultOption.cursorType;
 
 				// set cursor blinking after finish
-				if (option.cursorStopAfter == false || option.cursorStopAfter == true) this.cursorStopAfter = option.cursorStopAfter;
-				else this.cursorStopAfter =  monkeyDefaultOption.cursorStopAfter;
+				if (option.cursorStopAfter == false || option.cursorStopAfter == true) this.option.cursorStopAfter = option.cursorStopAfter;
+				else this.option.cursorStopAfter =  monkeyDefaultOption.cursorStopAfter;
 
 				// start type after scroll to it
-				if (option.startAfterScroll == false || option.startAfterScroll == true) this.startAfterScroll = option.startAfterScroll;
-				else this.startAfterScroll = monkeyDefaultOption.startAfterScroll;
+				if (option.startAfterScroll == false || option.startAfterScroll == true) this.option.startAfterScroll = option.startAfterScroll;
+				else this.option.startAfterScroll = monkeyDefaultOption.startAfterScroll;
 
 				// set action after finish
-				if (option.doItAfterFinish instanceof Function) this.doItAfterFinish = option.doItAfterFinish;
-				else this.doItAfterFinish = monkeyDefaultOption.doItAfterFinish;
+				if (option.doItAfterFinish instanceof Function) this.option.doItAfterFinish = option.doItAfterFinish;
+				else this.option.doItAfterFinish = monkeyDefaultOption.doItAfterFinish;
 			}
 
 			// set defaults
 			else {
 				this.setTypeText($(this).html());
-				this.speed = this.definitionSpeed[monkeyDefaultOption.speed];
-				this.cursorType = monkeyDefaultOption.cursorType;
-				this.cursorStopAfter = monkeyDefaultOption.cursorStopAfter;
-				this.startAfterScroll = monkeyDefaultOption.startAfterScroll;
-				this.doItAfterFinish = monkeyDefaultOption.doItAfterFinish;
+				this.option.speed = this.definitionSpeed[monkeyDefaultOption.speed];
+				this.option.cursorType = monkeyDefaultOption.cursorType;
+				this.option.cursorStopAfter = monkeyDefaultOption.cursorStopAfter;
+				this.option.startAfterScroll = monkeyDefaultOption.startAfterScroll;
+				this.option.doItAfterFinish = monkeyDefaultOption.doItAfterFinish;
 			}
 
 		}
@@ -155,7 +156,7 @@
 		this.setOption(option);
 
 		// check doItAfterFinish
-		if (this.startAfterScroll == true && this.elementInView() == false) {
+		if (this.option.startAfterScroll == true && this.elementInView() == false) {
 
 			var that = this;
 			var started = false;
