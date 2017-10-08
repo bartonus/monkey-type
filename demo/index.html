@@ -100,7 +100,9 @@
 					monkeyText: 'Hello World!',
 					speed: 'medium',
 					cursorType: 'replace',					
-					doItAfterFinish: function(){ 
+					doItAfterFinish: function(element){ 
+						
+						element.css('color', '#AC0000');
 						
 						$('#subTitle').monkeyType({
 

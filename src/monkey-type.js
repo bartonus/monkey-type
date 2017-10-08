@@ -28,8 +28,8 @@
 		}
 
 		// monkey definition
-		this.monkeyTypeDefinition = [100,200,200,400,50,100,20,20,100,50,50,400];
-		this.monkeyOnSpaceThinking = [300,600,1000,2000];
+		this.definitionMonkeyType = [100,200,200,400,50,100,20,20,100,50,50,400];
+		this.definitionMonkeyOnSpaceThinking = [300,600,1000,2000];
 		this.definitionSpeed = {'vslow': 1.5, 'slow': 1, 'medium': 0.6, 'fast': 0.3, 'vfast': 0.1};
 		this.definitionCursorType = ['insert', 'replace'];
 
@@ -58,11 +58,11 @@
 				// monkey definition
 				if (this.typeThis[i] != ' ')
 				{
-					var delayIt = this.monkeyTypeDefinition[this.beMoreMonkey(0, this.monkeyTypeDefinition.length)];
+					var delayIt = this.definitionMonkeyType[this.beMoreMonkey(0, this.definitionMonkeyType.length)];
 				}
 				else
 				{
-					var delayIt = this.monkeyOnSpaceThinking[this.beMoreMonkey(0, this.monkeyOnSpaceThinking.length)];
+					var delayIt = this.definitionMonkeyOnSpaceThinking[this.beMoreMonkey(0, this.definitionMonkeyOnSpaceThinking.length)];
 				}
 
 				// write character
@@ -86,7 +86,7 @@
 			if (lastChar == true) {
 
 				// do it after finish
-				setTimeout(function(){doItAfterFinish();}, delay);
+				setTimeout(function(){doItAfterFinish(element);}, delay);
 
 				// stop blinking
 				if (this.cursorStopAfter == true)
