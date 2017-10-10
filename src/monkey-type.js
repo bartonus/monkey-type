@@ -56,7 +56,7 @@
 			if (this.option.startAfter != null) {
 				var elementAfter = $(this.option.startAfter);
 
-				elementAfter.bind('cssClassChanged', function(){
+				elementAfter.bind('onClassChanged', function(){
 
 					if ($(this).hasClass('monkey-type-finish'))
 					{
@@ -167,7 +167,7 @@
 		}
 
 		this.setTypeText = function(text) {
-			this.typeText = text.replace(/[^a-zA-Z0-9ęóąśłżźćń,.\(\)\[\]!@#;:'"\? -]/gi, ' ');
+			this.typeText = text.replace(/[^a-zA-Z0-9ęóąśłżźćń,.\(\)\[\]!@#$%^&:;*'"\\+{}'"//=? -]/gi, ' ');
 			$(this).html('');
 		}
 
@@ -198,7 +198,7 @@
 
 				// set cursor blinking after finish
 				if (option.cursorStopAfter == false || option.cursorStopAfter == true) this.option.cursorStopAfter = option.cursorStopAfter;
-				else this.option.cursorStopAfter =  monkeyDefaultOption.cursorStopAfter;
+				else this.option.cursorStopAfter =	monkeyDefaultOption.cursorStopAfter;
 
 				// start type after scroll to it
 				if (option.startAfterScroll == false || option.startAfterScroll == true) this.option.startAfterScroll = option.startAfterScroll;
@@ -231,19 +231,23 @@
 
 	}
 
+	// add monkeyType to jQuery
 	$.fn.monkeyType = monkeyType;
 
-    // Your base, I'm in it!
-    var originalAddClassMethod = $.fn.addClass;
-    $.fn.addClass = function(){
-        // Execute the original method.
-        var result = originalAddClassMethod.apply(this, arguments);
-
-        // trigger a custom event
-        jQuery(this).trigger('cssClassChanged');
-
-        // return the original result
-        return result;
-    }	
+	// original add class
+	var originalAddClassMethod = $.fn.addClass;
 	
+	// addClass modification
+	$.fn.addClass = function(){
+
+		// add original method
+		var result = originalAddClassMethod.apply(this, arguments);
+
+		// add trigger
+		$(this).trigger('onClassChanged');
+
+		// return original method
+		return result;
+	}
+
 })(jQuery);
