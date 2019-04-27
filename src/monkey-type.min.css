@@ -1,1 +1,3 @@
-.monkey-type:after{animation:blink 1s .7s infinite;-webkit-animation:blink .7s infinite}.monkey-type.monkey-type-insert:after{content:"_"}.monkey-type.monkey-type-replace:after{content:"|"}@-webkit-keyframes blink{0%{opacity:1}50%{opacity:0}100%{opacity:1}}@-moz-keyframes blink{0%{opacity:1}50%{opacity:0}100%{opacity:1}}@keyframes blink{0%{opacity:1}50%{opacity:0}100%{opacity:1}}
+.monkey-type:after{animation:blink 1s .7s infinite;-webkit-animation:blink .7s infinite}.monkey-type.monkey-type-insert:after{content:"_"}.monkey-type.monkey-type-replace:after{content:"|"}@-webkit-keyframes blink{0%{opacity:1}50%{opacity:0}100%{opacity:1}}@keyframes blink{0%{opacity:1}50%{opacity:0}100%{opacity:1}}
+
+/*# sourceMappingURL=monkey-type.min.css.map */

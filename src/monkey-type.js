@@ -2,7 +2,7 @@
  * MonkeyType 2.0.1
  * Copyright 2017 Michal Barcikowski
  * Available via the MIT or new BSD @license.
- * Project: https://github.com/bartonus/monkey-type
+ * Project: https://github.com/fixmind/monkey-type
  */
 
 (function(jq){

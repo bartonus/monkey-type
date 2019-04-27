@@ -2,12 +2,14 @@
 <html lang=en>
 	<head>
 		<meta charset=utf-8>
-		<title>monkey-type::demo</title>
+		<title>Monkey Type</title>
+		<meta name="description" content="Monkey Type is a script that simulates keyboard typing. Text appears letter by letter with human irregular speed.">
+		<meta name="keywords" content="monkey type, monkey, type, letter by letter, human typing, human irregular spped, irregular typing, javascript, jquery, free script, impressive presentation">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="../src/monkey-type.min.css"/>
 		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-		<script type="text/javascript" src="lib/jquery-3.2.1.min.js"></script>				
+		<script type="text/javascript" src="lib/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="../src/monkey-type.min.js"></script>
 		<style>
 			
@@ -21,24 +23,32 @@
 			
 			header {
 			
-				text-align: center;
-				padding: 0 20px;
-				height: 150px;				
+				padding: 0;
 				font-family: 'Lato', sans-serif, arial;
-				background: #DDD;				
-				box-shadow: 0 10px 10px -12px #000;
+				background: #DDD url(img/relaxed.jpg) no-repeat center center;
+				background-size: cover;
+			
+			}
+			
+			header div.mask {
+			
+				width: 100%;
+				height: 250px;
 				display: flex;
 				align-items: center;
+				background: rgba(255,255,255,0.6);
 			
 			}
 
-			header div {
+			header div.top {
 
 				width: 100%;
 				max-width: 400px;
 				margin: 0 auto;
 				box-sizing: border-box;
+				text-align: center;
 			}
+
 			
 			header h1, header h2  {
 			
@@ -86,27 +96,23 @@
 	<body>
 		
 		<header>
-			<div>
-				<h1 id="myTitle">Hello World!</h1>
-				<h2 id="subTitle">This text is written by a monkey ;-)</h2>
+			<div class="mask">
+				<div class="top">
+					<h1 id="myTitle">Hello World!</h1>
+					<h2 id="subTitle">This text is written by a monkey ;-)</h2>
+				</div>
 			</div>
 		</header>
 		
 		<section>
 		
 			<div class="download">
-				download:<br><b><a href="https://github.com/bartonus/monkey-type">https://github.com/bartonus/monkey-type</a></b>
+				download:<br><b><a href="https://github.com/fixmind/monkey-type">https://github.com/fixmind/monkey-type</a></b>
 			</div>
 					
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-			Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem.
-			Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis,
-			turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet,
-			elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque.
-			Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales
-			velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam viverra nisi, in interdum massa nibh nec erat.</p>
+			<p>Monkey Type is a script that simulates keyboard typing. Text appears letter by letter with human irregular speed. This script will add your page to the glamorous look.</p>
 
-			<h2 id="myParagraphTitle">Scroll down, monkey will start type, after you scroll to this element.</h2>
+			<h2 id="myParagraphTitle">This text will start type, when top will appears complete.</h2>
 			
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 			Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem.
@@ -127,10 +133,10 @@
 			velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam viverra nisi, in interdum massa nibh nec erat.</p>
 			
 		</section>
-	
+		
 		<footer>
 			<p>2017@MBARCIKOWSKI</p>
-			<a href="https://github.com/bartonus/monkey-type">https://github.com/bartonus/monkey-type</a>
+			<a href="https://github.com/fixmind/monkey-type">https://github.com/fixmind/monkey-type</a>
 		</footer>
 	
 		<script type="text/javascript">
@@ -138,14 +144,14 @@
 			$('#myTitle').monkeyType({
 
 				speed: 'slow',
-				cursorType: 'replace',					
+				cursorType: 'replace',	
 				doItAfterFinish: function(element){ 
 					
 					element.css('color', '#AC0000');
 					
 				}
 
-			});		
+			});
 
 			$('#subTitle').monkeyType({
 				
@@ -153,8 +159,8 @@
 				cursorType: 'insert',
 				startAfter: '#myTitle',
 
-			});				
-
+			});
+			
 			$('#myParagraphTitle').monkeyType({speed: 'fast', startAfter: '#subTitle'});
 			
 			$('#myHeader').monkeyType({speed: 'fast'});
@@ -162,6 +168,6 @@
 			$('#paragraph').monkeyType({speed: 'vfast', 'startAfter': '#myHeader'});
 			
 		</script>
-				
+
 	</body>
 </html>
